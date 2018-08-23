@@ -3,9 +3,15 @@ import '../styles/dashboard.css';
 import Linechart from './Linechart';
 
 class Dashboard extends Component {
-  render() {
+  render () {
     return (
-      <p>This is Dashboard.</p>
+      <div className='dashboard-container'>
+        <div className='dashboard-header text-center'>
+        </div>
+        <div className='container-fluid dashboard-body row'>
+          {/*<Linechart/>*/}
+        </div>
+      </div>
     )
   }
 }
