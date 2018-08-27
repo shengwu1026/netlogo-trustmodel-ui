@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/charts.css';
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
-import Linechart from './Linechart';
+import Linechart from './MainChart';
 import Parameters from './Parameters';
 
 class Charts extends Component {
