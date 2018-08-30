@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { handleInitialData } from "../actions/index";
 import Nav from './Nav';
 import Dashboard from './Dashboard';
-import Charts from './Charts';
 
 class App extends Component {
   componentDidMount () {
@@ -14,11 +13,10 @@ class App extends Component {
   render () {
     return (
       <Router>
-        <div className='container'>
+        <div className='container-fluid'>
           <Nav/>
           <Switch>
             <Route exact path='/' component={Dashboard}/>
-            <Route exact path='/charts' component={Charts}/>
             <Route render={() => <p>Not Found</p>}/>
           </Switch>
         </div>

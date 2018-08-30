@@ -1,46 +1,81 @@
 import React from "react";
-import { connect } from 'react-redux';
-import Chart from 'chart.js';
-import {Scatter} from 'react-chartjs-2';
+import {connect} from 'react-redux';
+import {Bar} from 'react-chartjs-2'
+// import AltBar from './AltBar';
 import Loading from './Loading';
 
 class MainChart extends React.Component {
   render() {
-    console.log(this.props);
     const data = (canvas) => {
       const ctx = canvas.getContext("2d");
       return {
-        labels: ['Scatter'],
-          datasets: [
-            {
-              label: 'My First dataset',
-              fill: false,
-              backgroundColor: 'rgba(75,192,192,0.4)',
-              pointBorderColor: 'rgba(75,192,192,1)',
-              pointBackgroundColor: '#fff',
-              pointBorderWidth: 1,
-              pointHoverRadius: 5,
-              pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-              pointHoverBorderColor: 'rgba(220,220,220,1)',
-              pointHoverBorderWidth: 2,
-              pointRadius: 1,
-              pointHitRadius: 10,
-              data: [
-                { x: this.props.reliefZone1.startPosition, y: 75 },
-                { x: this.props.reliefZone1.endPosition, y: 49 },
-                { x: this.props.reliefZone2.startPosition, y: 90 },
-                { x: this.props.reliefZone2.endPosition, y: 29 }
-              ]
-            }
-          ]
+        labels: ['1', '2', '3', '4'],
+        datasets: [
+          {
+            label: 'Path Tracking',
+            data: [
+              {x: this.props.reliefZone1.startPosition, y: 100},
+              {x: this.props.reliefZone2.startPosition, y: 100},
+              {x: this.props.shockZone1.startPosition, y: 100},
+              {x: this.props.shockZone2.startPosition, y: 100}
+            ],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)'
+            ]
+          },
+          {
+            data: [
+              {x: this.props.reliefZone1.startPosition, y: -100},
+              {x: this.props.reliefZone2.startPosition, y: -100},
+              {x: this.props.shockZone1.startPosition, y: -100},
+              {x: this.props.shockZone2.startPosition, y: -100}
+            ],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)'
+            ]
+          }
+        ]
       }
     };
-    
+
+    const options = {
+      responsive: true,
+      legend: {
+        display: false
+      },
+      title: {
+        display: true,
+        text: 'Path Tracking'
+      },
+      scales: {
+        xAxes: [{
+          stacked: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Years'
+          },
+        }],
+        yAxes: [{
+          display: true,
+          ticks: {
+            min: -100,
+            max: 100
+          }
+        }]
+      }
+    };
+
     return (
       <div>
         {!this.props.reliefZone1
           ? <Loading text='Loading'/>
-          : <Scatter data={data} />
+          : <Bar data={data} options={options}/>
         }
       </div>
     );
