@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux';
 import {Bar} from 'react-chartjs-2'
-// import AltBar from './AltBar';
 import Loading from './Loading';
 
 class MainChart extends React.Component {
