@@ -1,23 +1,23 @@
 let zones = {
   shockZone1: {
     id: 'shock_zone_1',
-    startPosition: 40,
-    endPosition: 50
+    startPosition: 40*2,
+    endPosition: 50*2
   },
   shockZone2: {
     id: 'shock_zone_2',
-    startPosition: 250,
-    endPosition: 280
+    startPosition: 250*2,
+    endPosition: 280*2
   },
   reliefZone1: {
     id: 'relief_zone_1',
-    startPosition: 20,
-    endPosition: 30
+    startPosition: 20*2,
+    endPosition: 30*2
   },
   reliefZone2: {
     id: 'relief_zone_2',
-    startPosition: 100,
-    endPosition: 110
+    startPosition: 100*2,
+    endPosition: 110*2
   }
 };
 
