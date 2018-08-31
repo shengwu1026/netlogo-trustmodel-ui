@@ -1,5 +1,9 @@
 # UI Repository of Netlogo Trustmodel
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project is a React application of NetLogo Trustmodel.
 
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+**Run:**
+* npm install
+* npm run start
+
+Note: Please use node version 6.9.4.

@@ -10,11 +10,6 @@ export default function Nav () {
             Dashboard
           </NavLink>
         </li>
-        <li>
-          <NavLink to='/charts' exact activeClassName='active'>
-            Charts
-          </NavLink>
-        </li>
       </ul>
     </nav>
   )
