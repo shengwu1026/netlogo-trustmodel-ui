@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/charts.css';
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
-import Linechart from './MainChart';
+import MainChart from './MainChart';
 import Parameters from './Parameters';
 
 class Dashboard extends Component {
@@ -17,7 +17,7 @@ class Dashboard extends Component {
           </div>
           <div className='col-8' id='charts'>
             <div id='main-chart'>
-              <Linechart/>
+              <MainChart/>
             </div>
             <div className='row buttons text-center'>
               <div className='col-4'>
