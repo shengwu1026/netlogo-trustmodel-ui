@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/charts.css';
+import '../styles/dashboard.css';
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import MainChart from './MainChart';

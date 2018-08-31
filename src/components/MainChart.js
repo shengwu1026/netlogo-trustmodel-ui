@@ -1,80 +1,52 @@
-import React from "react";
+import React, {Component} from "react";
 import {connect} from 'react-redux';
-import {Bar} from 'react-chartjs-2'
 import Loading from './Loading';
+import '../styles/mainChart.css';
 
-class MainChart extends React.Component {
+class MainChart extends Component {
+  componentDidUpdate() {
+    if(this.props.reliefZone1) {
+      var ctx = document.getElementById("mainChart").getContext("2d");
+      ctx.fillStyle = "#00FF00";
+      ctx.fillRect(
+        this.props.reliefZone1.startPosition,
+        0,
+        this.props.reliefZone1.endPosition-this.props.reliefZone1.startPosition,
+        400
+      )
+
+      ctx.fillStyle = "#00FF00";
+      ctx.fillRect(
+        this.props.reliefZone2.startPosition,
+        0,
+        this.props.reliefZone2.endPosition-this.props.reliefZone2.startPosition,
+        400
+      )
+
+      ctx.fillStyle = "#FF0000";
+      ctx.fillRect(
+        this.props.shockZone1.startPosition,
+        0,
+        this.props.shockZone1.endPosition-this.props.shockZone1.startPosition,
+        400
+      )
+
+      ctx.fillStyle = "#FF0000";
+      ctx.fillRect(
+        this.props.shockZone2.startPosition,
+        0,
+        this.props.shockZone2.endPosition-this.props.shockZone2.startPosition,
+        400
+      )
+    }
+  }
+
   render() {
-    const data = (canvas) => {
-      const ctx = canvas.getContext("2d");
-      return {
-        labels: ['1', '2', '3', '4'],
-        datasets: [
-          {
-            label: 'Path Tracking',
-            data: [
-              {x: this.props.reliefZone1.startPosition, y: 100},
-              {x: this.props.reliefZone2.startPosition, y: 100},
-              {x: this.props.shockZone1.startPosition, y: 100},
-              {x: this.props.shockZone2.startPosition, y: 100}
-            ],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)'
-            ]
-          },
-          {
-            data: [
-              {x: this.props.reliefZone1.startPosition, y: -100},
-              {x: this.props.reliefZone2.startPosition, y: -100},
-              {x: this.props.shockZone1.startPosition, y: -100},
-              {x: this.props.shockZone2.startPosition, y: -100}
-            ],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)'
-            ]
-          }
-        ]
-      }
-    };
-
-    const options = {
-      responsive: true,
-      legend: {
-        display: false
-      },
-      title: {
-        display: true,
-        text: 'Path Tracking'
-      },
-      scales: {
-        xAxes: [{
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'Years'
-          },
-        }],
-        yAxes: [{
-          display: true,
-          ticks: {
-            min: -100,
-            max: 100
-          }
-        }]
-      }
-    };
-
     return (
       <div>
         {!this.props.reliefZone1
           ? <Loading text='Loading'/>
-          : <Bar data={data} options={options}/>
+          : <canvas id="mainChart" width="1200" height="400"></canvas>
         }
       </div>
     );
