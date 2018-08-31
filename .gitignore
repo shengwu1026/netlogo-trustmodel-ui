@@ -1,5 +1,14 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# User-specific stuff:
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/netlogo-trustmodel-UI.iml
+.idea/modules.xml
+.idea/misc.xml
+.idea/dictionaries
+.idea/codeStyles
+
 # dependencies
 /node_modules
 
@@ -11,7 +20,6 @@
 
 # misc
 .DS_Store
-.idea
 .env.local
 .env.development.local
 .env.test.local
