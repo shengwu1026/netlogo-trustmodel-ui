@@ -1,8 +1,9 @@
-import {_getZones, _getPoints} from "../utils/_DATA";
+import {_getZones, _getPoints, _getParams} from "../utils/_DATA";
 
 export function getInitialData() {
   return Promise.all([
     _getZones(),
-    _getPoints()
-  ]).then(([zones, points]) => ({zones, points}))
+    _getPoints(),
+    _getParams()
+  ]).then(([zones, points, params]) => ({zones, points, params}))
 }

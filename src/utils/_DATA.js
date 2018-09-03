@@ -40,6 +40,29 @@ let points = {
   }
 };
 
+let params = {
+  clientNumber: 20,
+  roadSafetyEffectiveness: 5,
+  injuryRecovery: 85,
+  randomVariation: 0.171,
+  recalculateDrift: true,
+  driftModifier: 1.01,
+
+  // Recovery Risk Modifiers
+  injurySeverity: 0,
+  atFaultStatus: 0,
+  healthStatus: 0,
+  previousInjury: 0,
+  employment: 0,
+  vulnerableStatus: 0,
+  gender: 0,
+  age: 0,
+  claimDuration: 0,
+  injuryClassification: 0,
+  education: 0,
+  solicitors: 50
+};
+
 export function _getZones () {
   return new Promise((res, rej) => {
     setTimeout(() => res({...zones}), 1000)
@@ -49,5 +72,11 @@ export function _getZones () {
 export function _getPoints () {
   return new Promise((res, rej) => {
     setTimeout(() => res({...points}), 1000)
+  })
+}
+
+export function _getParams () {
+  return new Promise((res, rej) => {
+    setTimeout(() => res({...params}), 1000)
   })
 }
