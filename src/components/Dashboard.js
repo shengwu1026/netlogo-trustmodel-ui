@@ -8,13 +8,14 @@ import Parameters from './Parameters';
 class Dashboard extends Component {
   render () {
     return (
-      <div className='charts-container'>
-        <div className='charts-header text-center'>
+      <div className='dashboard-container container-fluid'>
+        <div className='dashboard-header text-center'>
         </div>
-        <div className='container-fluid charts-body row'>
+        <div className='dashboard-body row'>
           <div className='col-2' id='params'>
             <Parameters/>
           </div>
+
           <div className='col-8' id='charts'>
             <div id='main-chart'>
               <MainChart/>
@@ -37,6 +38,7 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
+
           <div className='col-2' id='status'>
             <p>Status</p>
             <div className="form-group">

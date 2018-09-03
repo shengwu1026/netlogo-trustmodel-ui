@@ -21,8 +21,33 @@ let zones = {
   }
 };
 
+let points = {
+  point1: {
+    x: 500,
+    y: 200
+  },
+  point2: {
+    x: 200,
+    y: 100
+  },
+  point3: {
+    x: 1000,
+    y: 5
+  },
+  point4: {
+    x: 1000,
+    y: 380
+  }
+};
+
 export function _getZones () {
   return new Promise((res, rej) => {
     setTimeout(() => res({...zones}), 1000)
+  })
+}
+
+export function _getPoints () {
+  return new Promise((res, rej) => {
+    setTimeout(() => res({...points}), 1000)
   })
 }
