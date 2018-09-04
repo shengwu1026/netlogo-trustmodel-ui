@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
+import '../styles/parameters.css';
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
-const Range = createSliderWithTooltip( Slider.Range );
+const Range = createSliderWithTooltip(Slider.Range);
 const Handle = Slider.Handle;
 
-const handle = ( props ) => {
-  const { value, dragging, index, ...restProps } = props;
+const handle = (props) => {
+  const {value, dragging, index, ...restProps} = props;
   return (
     <Tooltip
       prefixCls="rc-slider-tooltip"
@@ -24,20 +25,15 @@ const handle = ( props ) => {
 };
 
 class Parameters extends Component {
-  state = {
-    clientNumber: 20,
-    roadSafetyEffectiveness: 5,
-
-  };
-  
-  handleSliderChange = ( e ) => {
+  handleSliderChange = (e) => {
     const value = e;
-    this.setState( () => ( {
+    this.setState(() => ({
       clientNumber: value
-    } ) );
+    }));
   };
-  
-  render () {
+
+  render() {
+    console.log(this.props.params);
     return (
       <div className='params-container text-center'>
         <p>Parameters</p>
@@ -46,7 +42,49 @@ class Parameters extends Component {
                   handle={handle}
                   onChange={this.handleSliderChange}
           />
-          <p>Client Number: {this.state.clientNumber}</p>
+          <p>Client Number: {this.props.params.clientNumber}</p>
+
+          <Slider/>
+          <p>Road Safety Effectiveness</p>
+
+          <Slider/>
+          <p>Injury Recovery</p>
+
+          <Slider/>
+          <p>Random Variation</p>
+
+          <Slider/>
+          <p>Recalculate Drift</p>
+
+          <Slider/>
+          <p>Drift Modifier</p>
+
+          <Slider/>
+          <p>Solicitors</p>
+
+          <Slider/>
+          <p>Shock Zone 1 Starts</p>
+
+          <Slider/>
+          <p>Shock Zone 1 Ends</p>
+
+          <Slider/>
+          <p>Shock Zone 2 Starts</p>
+
+          <Slider/>
+          <p>Shock Zone 2 Ends</p>
+
+          <Slider/>
+          <p>Relief Zone 1 Starts</p>
+
+          <Slider/>
+          <p>Relief Zone 1 Ends</p>
+
+          <Slider/>
+          <p>Relief Zone 2 Starts</p>
+
+          <Slider/>
+          <p>Relief Zone 2 Ends</p>
         </div>
       </div>
     )
