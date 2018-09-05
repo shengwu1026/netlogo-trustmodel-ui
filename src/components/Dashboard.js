@@ -4,6 +4,7 @@ import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import MainChart from './MainChart';
 import Parameters from './Parameters';
+import Status from './Status';
 
 class Dashboard extends Component {
   render () {
@@ -17,10 +18,7 @@ class Dashboard extends Component {
           </div>
 
           <div className='col-8' id='charts'>
-            <div id='main-chart'>
-              <MainChart/>
-            </div>
-            <div className='row buttons text-center'>
+            <div className='row buttons text-center' id='main-buttons'>
               <div className='col-4'>
                 <button type="button" className="btn btn-outline-primary">
                   Set Up
@@ -37,14 +35,32 @@ class Dashboard extends Component {
                 </button>
               </div>
             </div>
+
+            <div id='main-chart'>
+              <MainChart/>
+            </div>
+
+            <div className='row buttons text-center' id='helper-buttons'>
+              <div className='col-4'>
+                <button type="button" className="btn btn-outline-primary">
+                  Wave
+                </button>
+              </div>
+              <div className='col-4'>
+                <button type="button" className="btn btn-outline-primary">
+                  Reset Shock
+                </button>
+              </div>
+              <div className='col-4'>
+                <button type="button" className="btn btn-outline-primary">
+                  Save World State
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className='col-2' id='status'>
-            <p>Status</p>
-            <div className="form-group">
-              <label htmlFor="injurySeverity">Injury Severity</label>
-              <input type="text" className="form-control" id="injurySeverity" />
-            </div>
+            <Status/>
           </div>
         </div>
       </div>
