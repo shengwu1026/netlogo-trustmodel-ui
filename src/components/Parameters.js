@@ -36,7 +36,7 @@ class Parameters extends Component {
     console.log(this.props.params);
     return (
       <div className='params-container text-center'>
-        <p>Parameters</p>
+        <h4>Parameters</h4>
         <div className='sliders'>
           <Slider min={0} max={1000} defaultValue={20} step={5}
                   handle={handle}
