@@ -4,6 +4,8 @@ import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import MainChart from './MainChart';
 import Parameters from './Parameters';
+import RiskModifiers from './RiskModifiers';
+import Charts from './Charts';
 import Status from './Status';
 
 class Dashboard extends Component {
@@ -57,10 +59,18 @@ class Dashboard extends Component {
                 </button>
               </div>
             </div>
+
+            <div id='status'>
+              <Status/>
+            </div>
+
+            <div id='charts'>
+              <Charts/>
+            </div>
           </div>
 
-          <div className='col-2' id='status'>
-            <Status/>
+          <div className='col-2' id='risk-modifiers'>
+            <RiskModifiers/>
           </div>
         </div>
       </div>

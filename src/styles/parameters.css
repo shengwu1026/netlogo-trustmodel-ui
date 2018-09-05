@@ -1,3 +1,8 @@
 .params-container p {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
+
+.params-container .h4 {
+  margin-bottom: 2rem;
+}
+
