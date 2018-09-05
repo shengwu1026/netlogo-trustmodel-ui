@@ -1,0 +1,15 @@
+#recovery-risk-modifiers button {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#status label {
+  margin-top: 20px;
+}
+
+#data span{
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+  padding: .5rem .75rem;
+}

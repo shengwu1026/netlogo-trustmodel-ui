@@ -4,6 +4,7 @@ import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import MainChart from './MainChart';
 import Parameters from './Parameters';
+import Status from './Status';
 
 class Dashboard extends Component {
   render () {
@@ -59,11 +60,7 @@ class Dashboard extends Component {
           </div>
 
           <div className='col-2' id='status'>
-            <p>Status</p>
-            <div className="form-group" id='recovery-risk-modifiers'>
-              <label htmlFor="injurySeverity">Injury Severity</label>
-              <input type="text" className="form-control" id="injurySeverity" />
-            </div>
+            <Status/>
           </div>
         </div>
       </div>
