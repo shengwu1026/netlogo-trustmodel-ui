@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../styles/status.css';
 
 class Status extends Component {
   render() {

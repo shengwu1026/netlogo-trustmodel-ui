@@ -6,4 +6,9 @@ This project is a React application of NetLogo Trustmodel.
 * npm install
 * npm run start
 
-Note: Please use node version 6.9.4.
+**Note**
+
+1. Please use node version 6.9.4. Have not tested other versions.
+2. You need to get backend running to fetch API. URL is default to localhost:8080. 
+Change it in /src/api/dashboard.js if needed. 
+Get the backend repo from https://github.com/SadiaWaleem/netlogo-trustmodel-backend.
