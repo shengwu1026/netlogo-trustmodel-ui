@@ -1,13 +1,24 @@
-#recovery-risk-modifiers button {
-  margin-left: 20px;
-  margin-right: 20px;
+.status-container {
+  margin-top: 25px;
+  margin-bottom: 50px;
 }
 
-#status label {
-  margin-top: 20px;
+#status-container-header {
+  margin-bottom: 3rem;
 }
 
-#data span{
+#status-container-body {
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 700px;
+  overflow-y: scroll;
+}
+
+#status-container-body p {
+  margin-bottom: 3rem;
+}
+
+#data span {
   color: #212529;
   background-color: #f8f9fa;
   border-color: #f8f9fa;
