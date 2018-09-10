@@ -17,23 +17,39 @@ class Dashboard extends Component {
         <div className='dashboard-body row'>
           <div className='col-2' id='params'>
             <Parameters/>
+            <RiskModifiers/>
           </div>
 
-          <div className='col-8' id='charts'>
+          <div className='col-8'>
             <div className='row buttons text-center' id='main-buttons'>
-              <div className='col-4'>
+              <div className='col-2'>
                 <button type="button" className="btn btn-outline-primary">
                   Set Up
                 </button>
               </div>
-              <div className='col-4'>
+              <div className='col-2'>
                 <button type="button" className="btn btn-outline-primary">
                   Go
                 </button>
               </div>
-              <div className='col-4'>
+              <div className='col-2'>
                 <button type="button" className="btn btn-outline-primary">
                   Go Once
+                </button>
+              </div>
+              <div className='col-2'>
+                <button type="button" className="btn btn-outline-primary">
+                  Wave
+                </button>
+              </div>
+              <div className='col-2'>
+                <button type="button" className="btn btn-outline-primary">
+                  Reset Shock
+                </button>
+              </div>
+              <div className='col-2'>
+                <button type="button" className="btn btn-outline-primary">
+                  Save World State
                 </button>
               </div>
             </div>
@@ -42,35 +58,13 @@ class Dashboard extends Component {
               <MainChart/>
             </div>
 
-            <div className='row buttons text-center' id='helper-buttons'>
-              <div className='col-4'>
-                <button type="button" className="btn btn-outline-primary">
-                  Wave
-                </button>
-              </div>
-              <div className='col-4'>
-                <button type="button" className="btn btn-outline-primary">
-                  Reset Shock
-                </button>
-              </div>
-              <div className='col-4'>
-                <button type="button" className="btn btn-outline-primary">
-                  Save World State
-                </button>
-              </div>
-            </div>
-
-            <div id='status'>
-              <Status/>
-            </div>
-
             <div id='charts'>
               <Charts/>
             </div>
           </div>
 
-          <div className='col-2' id='risk-modifiers'>
-            <RiskModifiers/>
+          <div className='col-2' id='status'>
+            <Status/>
           </div>
         </div>
       </div>

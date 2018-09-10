@@ -10,6 +10,7 @@ export function handleInitialData() {
         // dispatch(receiveZones(zones));
         // dispatch(receivePoints(points));
       .then((params) => {
+        console.log('actions', params);
         dispatch(receiveParams(params))
       })
   }

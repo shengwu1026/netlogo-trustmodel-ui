@@ -119,7 +119,7 @@ const mapStateToProps = (state) => {
     reliefZone1Starts: state.params.reliefZone1Starts_Slider,
     reliefZone2Starts: state.params.reliefZone2Starts_Slider,
     reliefZone1Ends: state.params.reliefZone1Ends_Slider,
-    reliefZone2Ends: state.params.reliefZone1Ends_Slider,
+    reliefZone2Ends: state.params.reliefZone2Ends_Slider,
     shockZone1Increase: state.params.shockZone1Increase_Slider,
     shockZone2Increase: state.params.shockZone2Increase_Slider,
     reliefZone1Decrease: state.params.reliefZone1Decrease_Slider,
