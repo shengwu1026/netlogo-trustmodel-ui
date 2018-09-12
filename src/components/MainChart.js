@@ -11,8 +11,6 @@ class MainChart extends Component {
       canvas.height = canvas.width / 3.0;
       //TODO: change pixel number
       const aspectRatio = window.innerWidth / 600.0;
-      console.log(canvas.height, canvas.width, aspectRatio, window.innerWidth);
-      console.log(this.props);
 
       if (canvas.getContext) {
         const ctx = canvas.getContext("2d");
@@ -37,7 +35,7 @@ class MainChart extends Component {
         ctx.fillRect(
           this.props.shockZone1Starts * aspectRatio,
           0,
-          this.props.shockZone1Ends * aspectRatio - this.props.shockZone1Starts* aspectRatio,
+          this.props.shockZone1Ends * aspectRatio - this.props.shockZone1Starts * aspectRatio,
           400 * aspectRatio
         );
 
@@ -62,10 +60,18 @@ class MainChart extends Component {
         //   ctx.fillRect(points[key].x * aspectRatio, points[key].y * aspectRatio, 3, 3)
         // });
 
-        //origin line
-        ctx.moveTo(0, 200 * aspectRatio);
-        ctx.lineTo(1200 * aspectRatio, 200 * aspectRatio);
+        //axis
+        ctx.strokeStyle = "#dee0e5";
+        ctx.moveTo(0, canvas.height / 2.0);
+        ctx.lineTo(canvas.width, canvas.height / 2.0);
         ctx.stroke();
+
+        let i;
+        for (i=0; i<6; i++) {
+          ctx.moveTo(canvas.width / 6.0 * (i+1), 0);
+          ctx.lineTo(canvas.width / 6.0 * (i+1), canvas.height);
+          ctx.stroke();
+        }
       }
     }
   }
@@ -75,7 +81,17 @@ class MainChart extends Component {
       <div>
         {!this.props.shockZone1Starts
           ? <Loading text='Loading'/>
-          : <canvas id="mainChart"></canvas>
+          : <div>
+            <canvas id="mainChart"></canvas>
+            <div className='row text-center' id='main-chart-labels'>
+              <div className='col-2'>1 Years</div>
+              <div className='col-2'>2 Years</div>
+              <div className='col-2'>3 Years</div>
+              <div className='col-2'>4 Years</div>
+              <div className='col-2'>5 Years</div>
+              <div className='col-2'>6 Years</div>
+            </div>
+          </div>
         }
       </div>
     );
@@ -85,67 +101,112 @@ class MainChart extends Component {
 const mapStateToProps = (state) => {
   return {
     //TODO: pixel conversion
-    shockZone1Starts: state.params.shockZone1Starts_Slider+300,
-    shockZone2Starts: state.params.shockZone2Starts_Slider+300,
-    shockZone1Ends: state.params.shockZone1Ends_Slider+300,
-    shockZone2Ends: state.params.shockZone2Ends_Slider+300,
-    reliefZone1Starts: state.params.reliefZone1Starts_Slider+300,
-    reliefZone2Starts: state.params.reliefZone2Starts_Slider+300,
-    reliefZone1Ends: state.params.reliefZone1Ends_Slider+300,
-    reliefZone2Ends: state.params.reliefZone2Ends_Slider+300,
+    shockZone1Starts: state.params.shockZone1Starts_Slider + 300,
+    shockZone2Starts: state.params.shockZone2Starts_Slider + 300,
+    shockZone1Ends: state.params.shockZone1Ends_Slider + 300,
+    shockZone2Ends: state.params.shockZone2Ends_Slider + 300,
+    reliefZone1Starts: state.params.reliefZone1Starts_Slider + 300,
+    reliefZone2Starts: state.params.reliefZone2Starts_Slider + 300,
+    reliefZone1Ends: state.params.reliefZone1Ends_Slider + 300,
+    reliefZone2Ends: state.params.reliefZone2Ends_Slider + 300,
   }
 };
 
 export default connect(mapStateToProps)(MainChart);
 
 
-{/*<script type="text/javascript">*/}
+{/*<script type="text/javascript">*/
+}
 
-  {/*var c = document.getElementById("myCanvas");*/}
-  {/*var ctx = c.getContext("2d");*/}
-  {/*var grd = ctx.createLinearGradient(0, 0, 175, 50*/}
-{/*)*/}
-{/*;*/}
-  {/*grd.addColorStop(0, "#FF0000"*/}
-{/*)*/}
-{/*;*/}
-  {/*grd.addColorStop(1, "#00FF00"*/}
-{/*)*/}
-{/*;*/}
-  {/*ctx.fillStyle = grd;*/}
-  {/*ctx.fillRect(0, 0, 175, 50*/}
-{/*)*/}
-{/*;*/}
+{/*var c = document.getElementById("myCanvas");*/
+}
+{/*var ctx = c.getContext("2d");*/
+}
+{/*var grd = ctx.createLinearGradient(0, 0, 175, 50*/
+}
+{/*)*/
+}
+{/*;*/
+}
+{/*grd.addColorStop(0, "#FF0000"*/
+}
+{/*)*/
+}
+{/*;*/
+}
+{/*grd.addColorStop(1, "#00FF00"*/
+}
+{/*)*/
+}
+{/*;*/
+}
+{/*ctx.fillStyle = grd;*/
+}
+{/*ctx.fillRect(0, 0, 175, 50*/
+}
+{/*)*/
+}
+{/*;*/
+}
 
-{/*</script>*/}
+{/*</script>*/
+}
 
-{/*< canvas*/}
-{/*id = "myCanvas"*/}
-{/*style = "display:none;"*/}
-{/*width = "200"*/}
-{/*height = "15"*/}
-{/*style = "border:3px solid #c3c3c3;" >*/}
-  {/*Your*/}
-{/*browser*/}
-{/*does*/}
-{/*not*/}
-{/*support*/}
-{/*the*/}
-{/*HTML5*/}
-{/*canvas*/}
-{/*tag.*/}
-{/*</canvas>*/}
+{/*< canvas*/
+}
+{/*id = "myCanvas"*/
+}
+{/*style = "display:none;"*/
+}
+{/*width = "200"*/
+}
+{/*height = "15"*/
+}
+{/*style = "border:3px solid #c3c3c3;" >*/
+}
+{/*Your*/
+}
+{/*browser*/
+}
+{/*does*/
+}
+{/*not*/
+}
+{/*support*/
+}
+{/*the*/
+}
+{/*HTML5*/
+}
+{/*canvas*/
+}
+{/*tag.*/
+}
+{/*</canvas>*/
+}
 
-{/*<*/}
-{/*input*/}
-{/*type = "button"*/}
-{/*value = "show"*/}
-{/*onClick = "return show();" / >*/}
+{/*<*/
+}
+{/*input*/
+}
+{/*type = "button"*/
+}
+{/*value = "show"*/
+}
+{/*onClick = "return show();" / >*/
+}
 
-  {/*< script*/}
-{/*type = "text/javascript" >*/}
-  {/*function show() {*/}
-    {/*document.getElementById("myCanvas").style.display = "block";*/}
-    {/*return false;*/}
-  {/*}*/}
-{/*</script>*/}
+{/*< script*/
+}
+{/*type = "text/javascript" >*/
+}
+{/*function show() {*/
+}
+{/*document.getElementById("myCanvas").style.display = "block";*/
+}
+{/*return false;*/
+}
+{/*}*/
+}
+{/*</script>*/
+}

@@ -26,14 +26,15 @@ const handle = (props) => {
 
 class Parameters extends Component {
   handleSliderChange = (e) => {
+    // e.preventDefault();
     const value = e;
+    console.log(value);
     this.setState(() => ({
       newClients: value
     }));
   };
 
   render() {
-    // console.log('params',this.props);
     return (
       <div className='params-container text-center'>
         <h4 id='params-header'>Parameters</h4>
@@ -44,13 +45,22 @@ class Parameters extends Component {
           />
           <p>New Clients: {this.props.newClients}</p>
 
-          <Slider/>
+          <Slider min={1} max={100} defaultValue={5} step={1}
+                  handle={handle}
+                  onChange={this.handleSliderChange}
+          />
           <p>Road Safety Effectiveness: {this.props.roadSafetyEffectiveness}</p>
 
-          <Slider/>
+          <Slider min={0} max={100} defaultValue={85} step={1}
+                  handle={handle}
+                  onChange={this.handleSliderChange}
+          />
           <p>Injury Recovery: {this.props.injuryRecovery}</p>
 
-          <Slider/>
+          <Slider min={0} max={0.2} defaultValue={0.171} step={0.001}
+                  handle={handle}
+                  onChange={this.handleSliderChange}
+          />
           <p>Random Variation: {this.props.randomVariation}</p>
 
           <Slider/>

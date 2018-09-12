@@ -78,20 +78,20 @@ class Status extends Component {
               <span>{this.props.params.neutralExit36PlusMonths_Label}</span>
             </p>
 
-            {/*<label>Bad Exit 36 Plus Months</label>*/}
-            {/*<p id='data'>*/}
-            {/*<span>{this.props.params.bottom36+Mo_Label}</span>*/}
-            {/*</p>*/}
+            <label>Bad Exit 36 Plus Months</label>
+            <p id='data'>
+            <span>{this.props.params.bottom36PlusMo_Label}</span>
+            </p>
 
-            {/*<label>Good Exit Ratio (%)</label>*/}
-            {/*<p id='data'>*/}
-            {/*<span>{this.props.params.goodExit6Months_Label}</span>*/}
-            {/*</p>*/}
+            <label>Good Exit Ratio (%)</label>
+            <p id='data'>
+              <span>{this.props.params.percentGoodExit_Label}</span>
+            </p>
 
-            {/*<label>Bad Exit Ratio (%)</label>*/}
-            {/*<p id='data'>*/}
-            {/*<span>{this.props.params.goodExit6Months_Label}</span>*/}
-            {/*</p>*/}
+            <label>Bad Exit Ratio (%)</label>
+            <p id='data'>
+              <span>{this.props.params.percentBadExit_Label}</span>
+            </p>
 
             <label>Embeddedness</label>
             <p id='data'>
@@ -125,18 +125,18 @@ class Status extends Component {
 
             <label>Recalculate Drift</label>
             <p id='data'>
-              <span>{this.props.params.recalculateDrift_Label}</span>
+              <span>{this.props.params.recalculateDrift_Label ? 'True' : 'False'}</span>
             </p>
 
-            {/*<label>Common Law Capture</label>*/}
-            {/*<p id='data'>*/}
-            {/*<span>{this.props.params.goodExit6Months_Label}</span>*/}
-            {/*</p>*/}
+            <label>Common Law Capture</label>
+            <p id='data'>
+              <span>{this.props.params.commonLawNum_Label}</span>
+            </p>
 
-            {/*<label>Common Law Ratio</label>*/}
-            {/*<p id='data'>*/}
-            {/*<span>{this.props.params.goodExit6Months_Label}</span>*/}
-            {/*</p>*/}
+            <label>Common Law Ratio</label>
+            <p id='data'>
+              <span>{this.props.params.commonLawPercent_Label}</span>
+            </p>
 
             <label>Costs</label>
             <p id='data'>

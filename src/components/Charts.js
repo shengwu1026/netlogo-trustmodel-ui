@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Line} from 'react-chartjs-2';
 import {connect} from 'react-redux';
+import '../styles/charts.css';
 
 class Charts extends Component {
   render() {
@@ -323,29 +324,32 @@ class Charts extends Component {
     };
 
     return (
-      <div className='row' id='charts'>
-        <div className='col-6' id='client-health-status'>
-          <Line data={clientHealthData} options={clientHealthOptions}/>
-        </div>
+      <div className='text-center charts-container'>
+        <h4 id='charts-container-header'>Charts</h4>
+        <div className='row' id='charts-container-body'>
+          <div className='col-6' id='client-health-status'>
+            <Line data={clientHealthData} options={clientHealthOptions}/>
+          </div>
 
-        <div className='col-6' id='client-status'>
-          <Line data={clientStatusData} options={clientStatusOptions}/>
-        </div>
+          <div className='col-6' id='client-status'>
+            <Line data={clientStatusData} options={clientStatusOptions}/>
+          </div>
 
-        <div className='col-6' id='personal-moderators'>
-          <Line data={personalModeratorsData} options={personalModeratorsOptions}/>
-        </div>
+          <div className='col-6' id='personal-moderators'>
+            <Line data={personalModeratorsData} options={personalModeratorsOptions}/>
+          </div>
 
-        <div className='col-6' id='client-health-limits'>
-          <Line data={healthLimitsData} options={healthLimitsOptions}/>
-        </div>
+          <div className='col-6' id='client-health-limits'>
+            <Line data={healthLimitsData} options={healthLimitsOptions}/>
+          </div>
 
-        <div className='col-6' id='client-paths'>
-          <Line data={clientPathsData} options={clientPathsOptions}/>
-        </div>
+          <div className='col-6' id='client-paths'>
+            <Line data={clientPathsData} options={clientPathsOptions}/>
+          </div>
 
-        <div className='col-6' id='cost-per-client'>
-          <Line data={costPerClientData} options={costPerClientOptions}/>
+          <div className='col-6' id='cost-per-client'>
+            <Line data={costPerClientData} options={costPerClientOptions}/>
+          </div>
         </div>
       </div>
     )
