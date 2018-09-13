@@ -1,20 +1,27 @@
-import {_getZones, _getPoints, _getParams, _updateParams} from "../utils/_DATA";
-import {isObject} from "../utils/helpers";
 import axios from 'axios';
 
-function getParams() {
+function getParams(endPoint) {
   // return new Promise((res, rej) => {
   //   setTimeout(() => res({...params}), 1000)
   // })
-  return axios.post('http://localhost:8080/workspace/setup')
+  return axios.post(`http://localhost:8080/workspace/${endPoint}`)
+    .then(function (response) {
+      console.log('api', endPoint, response.data);
+      return response.data;
+    })
+}
+
+function getTurtles() {
+  return axios.get(`http://localhost:8080/workspace/turtles`)
     .then(function (response) {
       console.log('api', response.data);
       return response.data;
     })
 }
 
-export function getInitialData() {
-  return Promise.resolve(
-    getParams()
-  ).then((params) => (params))
+export function getData(endPoint) {
+  return Promise.all([
+    getParams(endPoint),
+    getTurtles()
+  ]).then(([params, turtles]) => ({params, turtles}))
 }

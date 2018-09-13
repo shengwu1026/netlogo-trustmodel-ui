@@ -7,6 +7,11 @@ export function getPercentage(count, total) {
 }
 
 export function formatNumber(number, digit) {
+  // console.log('formatNumber', number);
   const formattedNumber = number.toFixed(digit);
   return formattedNumber;
+}
+
+export function convertCordinate(cordinate, adjustment) {
+  return Number(cordinate) + adjustment
 }

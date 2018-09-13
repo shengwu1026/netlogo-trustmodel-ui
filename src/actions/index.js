@@ -1,17 +1,14 @@
-import { getInitialData } from "../api/dashboard";
+import { getData } from "../api/dashboard";
 // import { receiveZones } from "./zones";
-// import {receivePoints} from "./points";
+import {receiveTurtles} from "./turtles";
 import {receiveParams} from "./params";
 
-export function handleInitialData() {
+export function handleData(endPoint) {
   return (dispatch) => {
-    return getInitialData()
-      // .then(({zones, points, params}) => {
-        // dispatch(receiveZones(zones));
-        // dispatch(receivePoints(points));
-      .then((params) => {
-        console.log('actions', params);
-        dispatch(receiveParams(params))
+    return getData(endPoint)
+      .then(({params, turtles}) => {
+        dispatch(receiveParams(params));
+        dispatch(receiveTurtles(turtles));
       })
   }
 }

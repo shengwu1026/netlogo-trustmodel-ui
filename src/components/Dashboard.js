@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import '../styles/dashboard.css';
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
+import {connect} from 'react-redux';
 import MainChart from './MainChart';
 import Parameters from './Parameters';
 import RiskModifiers from './RiskModifiers';
 import Charts from './Charts';
 import Status from './Status';
+import {handleData} from "../actions";
 
 class Dashboard extends Component {
+  handleButton(button) {
+    this.props.dispatch(handleData(button))
+  };
+
   render () {
     return (
       <div className='dashboard-container container-fluid'>
@@ -23,7 +29,7 @@ class Dashboard extends Component {
           <div className='col-8'>
             <div className='row buttons text-center' id='main-buttons'>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary">
+                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleButton('setup')}>
                   Set Up
                 </button>
               </div>
@@ -33,12 +39,12 @@ class Dashboard extends Component {
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary">
+                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleButton('go-once')}>
                   Go Once
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary">
+                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleButton('wave')}>
                   Wave
                 </button>
               </div>
@@ -72,4 +78,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+export default connect()(Dashboard)

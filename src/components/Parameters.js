@@ -28,7 +28,7 @@ class Parameters extends Component {
   handleSliderChange = (e) => {
     // e.preventDefault();
     const value = e;
-    console.log(value);
+    // console.log(value);
     this.setState(() => ({
       newClients: value
     }));
