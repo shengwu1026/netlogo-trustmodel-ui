@@ -3,10 +3,12 @@ import {Line} from 'react-chartjs-2';
 import {connect} from 'react-redux';
 import '../styles/charts.css';
 import Loading from './Loading';
+import Plot from './Plot'
 
-class Charts extends Component {
+class Plots extends Component {
   render() {
-    if (this.props.params.clientHealthStatus_Plot) {
+    console.log('plots com', Object.keys(this.props.plots).length);
+    if (Object.keys(this.props.plots).length > 0) {
       const clientHealthData = {
         datasets: [
           {
@@ -27,7 +29,7 @@ class Charts extends Component {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [0]
+            data: [1, 2, 3, 4, 5, 6, 7]
           }
         ]
       };
@@ -137,7 +139,7 @@ class Charts extends Component {
         },
         title: {
           display: true,
-          text: 'Client Status Charts'
+          text: 'Client Status Plots'
         }
       };
 
@@ -325,32 +327,39 @@ class Charts extends Component {
         }
       };
 
+      console.log('plots com', this.props.plots[1]);
       return (
         <div className='text-center charts-container'>
-          <h4 id='charts-container-header'>Charts</h4>
+          <h4 id='charts-container-header'>Plots</h4>
           <div className='row' id='charts-container-body'>
-            <div className='col-6' id='client-health-status'>
+            {/*{Object.keys(this.props.plots).map(key => {*/}
+                {/*const plot = this.props.plots[key];*/}
+                {/*// console.log('plot', plot);*/}
+                {/*return (<Plot key={key} plot={plot}/>)*/}
+              {/*}*/}
+            {/*)}*/}
+            <div className='col-6' id='client-health'>
               <Line data={clientHealthData} options={clientHealthOptions}/>
             </div>
 
             <div className='col-6' id='client-status'>
-              <Line data={clientStatusData} options={clientStatusOptions}/>
+            <Line data={clientStatusData} options={clientStatusOptions}/>
             </div>
 
             <div className='col-6' id='personal-moderators'>
-              <Line data={personalModeratorsData} options={personalModeratorsOptions}/>
+            <Line data={personalModeratorsData} options={personalModeratorsOptions}/>
             </div>
 
             <div className='col-6' id='client-health-limits'>
-              <Line data={healthLimitsData} options={healthLimitsOptions}/>
+            <Line data={healthLimitsData} options={healthLimitsOptions}/>
             </div>
 
             <div className='col-6' id='client-paths'>
-              <Line data={clientPathsData} options={clientPathsOptions}/>
+            <Line data={clientPathsData} options={clientPathsOptions}/>
             </div>
 
             <div className='col-6' id='cost-per-client'>
-              <Line data={costPerClientData} options={costPerClientOptions}/>
+            <Line data={costPerClientData} options={costPerClientOptions}/>
             </div>
           </div>
         </div>
@@ -363,8 +372,8 @@ class Charts extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    params: state.params
+    plots: state.plots
   }
 };
 
-export default connect(mapStateToProps)(Charts)
+export default connect(mapStateToProps)(Plots)

@@ -1,14 +1,15 @@
-import { getData } from "../api/dashboard";
-// import { receiveZones } from "./zones";
-import {receiveTurtles} from "./turtles";
-import {receiveParams} from "./params";
+import {getData} from "../utils/api";
+import {receivePlots} from "./plots";
+import {receiveView} from "./view";
+import {receiveReports} from "./reports";
 
-export function handleData(endPoint) {
+export function handleData() {
   return (dispatch) => {
-    return getData(endPoint)
-      .then(({params, turtles}) => {
-        dispatch(receiveParams(params));
-        dispatch(receiveTurtles(turtles));
+    return getData()
+      .then(({reports, view, plots}) => {
+        dispatch(receiveReports(reports));
+        dispatch(receiveView(view));
+        dispatch(receivePlots(plots));
       })
   }
 }

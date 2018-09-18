@@ -1,17 +1,17 @@
-export const RECEIVE_PARAMS = 'RECEIVE_PARAMS';
-export const UPDATE_PARAMS = 'UPDATE_PARAMS';
+export const RECEIVE_REPORTS = 'RECEIVE_REPORTS';
+export const UPDATE_REPORTS = 'UPDATE_REPORTS';
 
-export function receiveParams (params) {
+export function receiveReports(reports) {
   return {
-    type: RECEIVE_PARAMS,
-    params
+    type: RECEIVE_REPORTS,
+    reports
   }
 }
 
-function updateParams(params) {
+function updateReports(reports) {
   return {
-    type: UPDATE_PARAMS,
-    params
+    type: UPDATE_REPORTS,
+    reports
   }
 }
 

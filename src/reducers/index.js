@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-// import zones from './zones';
-import turtles from './turtles';
-import params from './params';
+import reports from './reports';
+import view from './view';
+import plots from './plots';
 
 export default combineReducers({
-  // zones,
-  turtles,
-  params
+  reports,
+  view,
+  plots
 })

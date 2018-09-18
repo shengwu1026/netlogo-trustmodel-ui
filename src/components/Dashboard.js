@@ -1,35 +1,31 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import '../styles/dashboard.css';
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import {connect} from 'react-redux';
-import MainChart from './MainChart';
-import Parameters from './Parameters';
+import View from './View';
+import Sliders from './Sliders';
 import RiskModifiers from './RiskModifiers';
-import Charts from './Charts';
+import Plots from './Plots';
 import Status from './Status';
 import {handleData} from "../actions";
 
 class Dashboard extends Component {
-  handleButton(button) {
-    this.props.dispatch(handleData(button))
-  };
-
-  render () {
+  render() {
     return (
       <div className='dashboard-container container-fluid'>
         <div className='dashboard-header text-center'>
         </div>
         <div className='dashboard-body row'>
           <div className='col-2' id='params'>
-            <Parameters/>
+            <Sliders/>
             <RiskModifiers/>
           </div>
 
           <div className='col-8'>
             <div className='row buttons text-center' id='main-buttons'>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleButton('setup')}>
+                <button type="button" className="btn btn-outline-primary">
                   Set Up
                 </button>
               </div>
@@ -39,12 +35,12 @@ class Dashboard extends Component {
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleButton('go-once')}>
+                <button type="button" className="btn btn-outline-primary">
                   Go Once
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleButton('wave')}>
+                <button type="button" className="btn btn-outline-primary">
                   Wave
                 </button>
               </div>
@@ -61,11 +57,11 @@ class Dashboard extends Component {
             </div>
 
             <div id='main-chart'>
-              <MainChart/>
+              <View/>
             </div>
 
             <div id='charts'>
-              <Charts/>
+              <Plots/>
             </div>
           </div>
 

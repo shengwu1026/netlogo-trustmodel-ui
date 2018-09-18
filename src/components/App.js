@@ -7,7 +7,7 @@ import Dashboard from './Dashboard';
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleData('setup'))
+    this.props.dispatch(handleData())
   }
 
   render() {
