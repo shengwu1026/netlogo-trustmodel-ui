@@ -1,22 +1,40 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import '../styles/dashboard.css';
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
-import MainChart from './MainChart';
-import Parameters from './Parameters';
+import {connect} from 'react-redux';
+import View from './View';
+import Sliders from './Sliders';
 import RiskModifiers from './RiskModifiers';
-import Charts from './Charts';
+import Plots from './Plots';
 import Status from './Status';
+import {handleData} from "../actions/index";
+import axios from "axios";
 
 class Dashboard extends Component {
-  render () {
+  handleGo = (ticks) => {
+    let i;
+    for (i = 0; i < ticks; i++) {
+      console.log('ticks',i);
+      Promise.resolve(
+        axios.post(`http://localhost:8080/workspace/go`)
+      ).then(() => {
+        // setTimeout(() => {
+        //   this.props.dispatch(handleData())
+        // }, 5)
+        this.props.dispatch(handleData())
+      })
+    }
+  };
+
+  render() {
     return (
       <div className='dashboard-container container-fluid'>
         <div className='dashboard-header text-center'>
         </div>
         <div className='dashboard-body row'>
           <div className='col-2' id='params'>
-            <Parameters/>
+            <Sliders/>
             <RiskModifiers/>
           </div>
 
@@ -28,12 +46,12 @@ class Dashboard extends Component {
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary">
+                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleGo(10)}>
                   Go
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary">
+                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleGo(1)}>
                   Go Once
                 </button>
               </div>
@@ -55,11 +73,11 @@ class Dashboard extends Component {
             </div>
 
             <div id='main-chart'>
-              <MainChart/>
+              <View/>
             </div>
 
             <div id='charts'>
-              <Charts/>
+              <Plots/>
             </div>
           </div>
 
@@ -72,4 +90,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+export default connect()(Dashboard)
