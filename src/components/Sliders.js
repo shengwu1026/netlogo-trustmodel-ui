@@ -37,7 +37,7 @@ class Sliders extends Component {
   render() {
     return (
       <div className='params-container text-center'>
-        <h4 id='params-header'>Parameters</h4>
+        <h4 id='params-header'>Sliders</h4>
         <div className='sliders' id='params-body'>
           <Slider min={0} max={1000} defaultValue={20} step={5}
                   handle={handle}

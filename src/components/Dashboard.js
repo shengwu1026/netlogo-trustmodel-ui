@@ -8,9 +8,25 @@ import Sliders from './Sliders';
 import RiskModifiers from './RiskModifiers';
 import Plots from './Plots';
 import Status from './Status';
-import {handleData} from "../actions";
+import {handleData} from "../actions/index";
+import axios from "axios";
 
 class Dashboard extends Component {
+  handleGo = (ticks) => {
+    let i;
+    for (i = 0; i < ticks; i++) {
+      console.log('ticks',i);
+      Promise.resolve(
+        axios.post(`http://localhost:8080/workspace/go`)
+      ).then(() => {
+        // setTimeout(() => {
+        //   this.props.dispatch(handleData())
+        // }, 5)
+        this.props.dispatch(handleData())
+      })
+    }
+  };
+
   render() {
     return (
       <div className='dashboard-container container-fluid'>
@@ -30,12 +46,12 @@ class Dashboard extends Component {
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary">
+                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleGo(10)}>
                   Go
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary">
+                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleGo(1)}>
                   Go Once
                 </button>
               </div>

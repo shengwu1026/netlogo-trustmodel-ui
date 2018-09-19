@@ -74,7 +74,26 @@ function formatPlots() {
         formattedData: {
           datasets: formattedDataset
         },
+
         options: {
+          scales: {
+            xAxes: [{
+              display: true,
+              ticks: {
+                beginAtZero: false,
+                min: plots[i].xMin,
+                max: plots[i].xMax
+              }
+            }],
+            yAxes: [{
+              display: true,
+              ticks: {
+                beginAtZero: false,
+                min: plots[i].yMin,
+                max: plots[i].yMax
+              }
+            }]
+          },
           legend: {
             display: plots[i].legendShown
           },
@@ -89,18 +108,25 @@ function formatPlots() {
   })
 }
 
-export function getData() {
+export function getInitialData() {
   return Promise.resolve(
     axios.post(`http://localhost:8080/trust-model/setup`)
   ).then(() => {
       return Promise.all([
         getReports(),
         getView(),
-        // getPlots(),
         formatPlots()
       ]).then(([reports, view, plots]) => ({reports, view, plots}));
     })
     .catch(error => {
       console.log(error.response)
     });
+}
+
+export function getData() {
+  return Promise.all([
+    getReports(),
+    getView(),
+    formatPlots()
+  ]).then(([reports, view, plots]) => ({reports, view, plots}));
 }

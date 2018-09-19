@@ -140,7 +140,7 @@ class Status extends Component {
 
             <label>Costs</label>
             <p id='data'>
-              <span>{this.props.reports.costs_Label}</span>
+              <span>{formatNumber(this.props.reports.costs_Label, 2)}</span>
             </p>
           </div>
         </div>)
