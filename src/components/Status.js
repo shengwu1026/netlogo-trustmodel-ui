@@ -85,12 +85,12 @@ class Status extends Component {
 
             <label>Good Exit Ratio (%)</label>
             <p id='data'>
-              <span>{this.props.reports.percentGoodExit_Label}</span>
+              <span>{this.props.reports.percentGoodExit_Label ? this.props.reports.percentGoodExit_Label : 'N/A'}</span>
             </p>
 
             <label>Bad Exit Ratio (%)</label>
             <p id='data'>
-              <span>{this.props.reports.percentBadExit_Label}</span>
+              <span>{this.props.reports.percentBadExit_Label ? this.props.reports.percentBadExit_Label : 'N/A'}</span>
             </p>
 
             <label>Embeddedness</label>
@@ -135,7 +135,7 @@ class Status extends Component {
 
             <label>Common Law Ratio</label>
             <p id='data'>
-              <span>{this.props.reports.commonLawPercent_Label}</span>
+              <span>{this.props.reports.commonLawPercent_Label ? this.props.reports.commonLawPercent_Label : 'N/A'}</span>
             </p>
 
             <label>Costs</label>

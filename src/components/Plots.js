@@ -13,7 +13,6 @@ class Plots extends Component {
           <div className='row' id='charts-container-body'>
             {Object.keys(this.props.plots).map(key => {
                 const plot = this.props.plots[key];
-                console.log(plot.formattedData);
                 return (
                   <div className='col-6' key={key}>
                     <Scatter data={plot.formattedData} options={plot.options}/>
