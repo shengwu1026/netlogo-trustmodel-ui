@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Line} from 'react-chartjs-2';
+import {Scatter} from 'react-chartjs-2';
 import {connect} from 'react-redux';
 import '../styles/charts.css';
 import Loading from './Loading';
@@ -13,9 +13,10 @@ class Plots extends Component {
           <div className='row' id='charts-container-body'>
             {Object.keys(this.props.plots).map(key => {
                 const plot = this.props.plots[key];
+                console.log(plot.formattedData);
                 return (
                   <div className='col-6' key={key}>
-                    <Line data={plot.formattedData} options={plot.options}/>
+                    <Scatter data={plot.formattedData} options={plot.options}/>
                   </div>
                 )
               }

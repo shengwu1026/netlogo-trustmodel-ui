@@ -50,6 +50,7 @@ function formatPlots() {
           {
             label: pens[j].name,
             fill: false,
+            showLine: true,
             lineTension: 0.1,
             backgroundColor: pens[j].color,
             borderColor: pens[j].color,
