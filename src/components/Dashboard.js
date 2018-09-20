@@ -12,20 +12,12 @@ import {handleData} from "../actions/index";
 import axios from "axios";
 
 class Dashboard extends Component {
-  handleGo = (ticks) => {
-    let i;
-    for (i = 0; i < ticks; i++) {
-      console.log('ticks',i);
-      Promise.resolve(
-        axios.post(`http://localhost:8080/workspace/go`)
-      ).then(() => {
-        // setTimeout(() => {
-        //   this.props.dispatch(handleData())
-        // }, 5)
-        this.props.dispatch(handleData())
-      })
+  async handleGo(ticks) {
+    for (let i = 0; i < ticks; i++) {
+      await Promise.resolve(axios.post(`http://localhost:8080/workspace/go`));
+      this.props.dispatch(handleData())
     }
-  };
+  }
 
   render() {
     return (
@@ -90,4 +82,8 @@ class Dashboard extends Component {
   }
 }
 
-export default connect()(Dashboard)
+export default connect()
+
+(
+  Dashboard
+)

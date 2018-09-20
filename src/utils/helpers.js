@@ -8,8 +8,12 @@ export function getPercentage(count, total) {
 
 export function formatNumber(number, digit) {
   // console.log('formatNumber', number);
-  const formattedNumber = number.toFixed(digit);
-  return formattedNumber;
+  if(number) {
+    const formattedNumber = number.toFixed(digit);
+    return formattedNumber;
+  } else {
+    return number
+  }
 }
 
 export function convertCordinate(cordinate, adjustment) {
