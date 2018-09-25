@@ -1,4 +1,4 @@
-import {RECEIVE_REPORTS} from "../actions/reports";
+import {RECEIVE_REPORTS, UPDATE_REPORT} from "../actions/reports";
 
 export default function reports(state = {}, action) {
   switch (action.type) {
@@ -7,7 +7,11 @@ export default function reports(state = {}, action) {
         ...state,
         ...action.reports
       };
-
+    case UPDATE_REPORT:
+      return {
+        ...state,
+        [action.report.name]: action.report.value
+      };
     default:
       return state
   }

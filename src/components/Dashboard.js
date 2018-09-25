@@ -9,29 +9,16 @@ import RiskModifiers from './RiskModifiers';
 import Plots from './Plots';
 import Status from './Status';
 import {handleData, handleInitialData} from "../actions/index";
-import axios from "axios";
+import {handleCommand, getGo} from "../utils/api";
 
 class Dashboard extends Component {
   setup = () => {
     this.props.dispatch(handleInitialData());
   };
 
-  handleCommand = (command) => {
-    Promise.resolve(
-      axios({
-        method: 'post',
-        url: `http://localhost:8080/workspace/command`,
-        data: command,
-        config: { headers: {'Content-Type': 'application/json' }}
-      })
-    ).then(() => {
-      console.log('hey', command)
-    })
-  };
-
   async handleGo(ticks) {
     for (let i = 0; i < ticks; i++) {
-      await Promise.resolve(axios.post(`http://localhost:8080/workspace/go`));
+      await getGo();
       this.props.dispatch(handleData())
     }
   }
@@ -65,17 +52,17 @@ class Dashboard extends Component {
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleCommand('wave')}>
+                <button type="button" className="btn btn-outline-primary" onClick={() => handleCommand('wave')}>
                   Wave
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleCommand('reset-shock')}>
+                <button type="button" className="btn btn-outline-primary" onClick={() => handleCommand('reset-shock')}>
                   Reset Shock
                 </button>
               </div>
               <div className='col-2'>
-                <button type="button" className="btn btn-outline-primary" onClick={() => this.handleCommand('save-world-state')}>
+                <button type="button" className="btn btn-outline-primary" onClick={() => handleCommand('save-world-state')}>
                   Save World State
                 </button>
               </div>
@@ -99,8 +86,4 @@ class Dashboard extends Component {
   }
 }
 
-export default connect()
-
-(
-  Dashboard
-)
+export default connect()(Dashboard)

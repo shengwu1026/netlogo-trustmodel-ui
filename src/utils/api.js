@@ -14,7 +14,7 @@ function getReports() {
 function getView() {
   return axios.get(`http://localhost:8080/workspace/view`)
     .then(function (response) {
-      console.log('view', response.data);
+      // console.log('view', response.data);
       return response.data;
     })
     .catch(error => {
@@ -25,7 +25,7 @@ function getView() {
 function getPlots() {
   return axios.get(`http://localhost:8080/workspace/plots`)
     .then(function (response) {
-      console.log('plots', response.data);
+      // console.log('plots', response.data);
       return response.data;
     })
     .catch(error => {
@@ -113,12 +113,12 @@ export function getInitialData() {
   return Promise.resolve(
     axios.post(`http://localhost:8080/trust-model/setup`)
   ).then(() => {
-      return Promise.all([
-        getReports(),
-        getView(),
-        formatPlots()
-      ]).then(([reports, view, plots]) => ({reports, view, plots}));
-    })
+    return Promise.all([
+      getReports(),
+      getView(),
+      formatPlots()
+    ]).then(([reports, view, plots]) => ({reports, view, plots}));
+  })
     .catch(error => {
       console.log(error.response)
     });
@@ -130,4 +130,19 @@ export function getData() {
     getView(),
     formatPlots()
   ]).then(([reports, view, plots]) => ({reports, view, plots}));
+}
+
+export function handleCommand(command) {
+  return axios({
+    method: 'post',
+    url: `http://localhost:8080/workspace/command`,
+    data: command,
+    config: {headers: {'Content-Type': 'application/json'}}
+  }).then(() => {
+    console.log('command', command)
+  })
+}
+
+export function getGo() {
+  return Promise.resolve(axios.post(`http://localhost:8080/workspace/go`))
 }

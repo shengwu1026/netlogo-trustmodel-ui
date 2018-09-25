@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <Router>
         <div className='container-fluid'>
-          <Nav/>
+          {/*<Nav/>*/}
           <Switch>
             <Route exact path='/' component={Dashboard}/>
             <Route render={() => <p>Not Found</p>}/>

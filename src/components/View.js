@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
 import Loading from './Loading';
-import '../styles/mainChart.css';
-import {convertCordinate} from '../utils/helpers'
 
 class View extends Component {
   render() {
@@ -11,7 +9,7 @@ class View extends Component {
         {!this.props.view.imgSrc
           ? <Loading text='Loading'/>
           : <div>
-            <img src={this.props.view.imgSrc} width={'100%'}/>
+            <img src={this.props.view.imgSrc} width={'100%'} alt='view'/>
             <div className='row text-center' id='main-chart-labels'>
               <div className='col-2'>1 Years</div>
               <div className='col-2'>2 Years</div>

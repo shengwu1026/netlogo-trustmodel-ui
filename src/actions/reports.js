@@ -1,5 +1,7 @@
+import {handleCommand} from "../utils/api";
+
 export const RECEIVE_REPORTS = 'RECEIVE_REPORTS';
-export const UPDATE_REPORTS = 'UPDATE_REPORTS';
+export const UPDATE_REPORT = 'UPDATE_REPORT';
 
 export function receiveReports(reports) {
   return {
@@ -8,21 +10,17 @@ export function receiveReports(reports) {
   }
 }
 
-function updateReports(reports) {
+function updateReport(report) {
   return {
-    type: UPDATE_REPORTS,
-    reports
+    type: UPDATE_REPORT,
+    report
   }
 }
 
-// export function handleUpdateparams (params) {
-//   return (dispatch, getState) => {
-//     const { authedUser } = getState()
-//
-//     return savePoll({
-//       ...poll,
-//       author: authedUser
-//     })
-//       .then((poll) => dispatch(addPoll(poll)))
-//   }
-// }
+export function handleUpdateReport(report, command) {
+  return (dispatch) => {
+    handleCommand(command).then(() => {
+      dispatch(updateReport(report));
+    })
+  }
+}
