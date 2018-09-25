@@ -3,6 +3,7 @@ import Loading from "./Loading";
 import {connect} from 'react-redux';
 import {formatNumber} from "../utils/helpers";
 import '../styles/status.css';
+import {handleUpdateReport} from "../actions/reports";
 
 class Status extends Component {
   render() {
@@ -13,9 +14,28 @@ class Status extends Component {
             <h4>Status</h4>
           </div>
           <div id='status-container-body'>
+            {/*TODO: needs to work on Regex*/}
+            {/*{Object.keys(this.props.reports).map(key => {*/}
+                {/*const label = this.props.reports[key];*/}
+                {/*console.log(label);*/}
+                {/*const labelName = key*/}
+                  {/*.slice(0, -6)*/}
+                  {/*.split(/(?=[A-Z])|(?=[0-9])/)*/}
+                  {/*.map(word => word.charAt(0).toUpperCase() + word.slice(1));*/}
+
+                {/*return (*/}
+                  {/*<div key={key}>*/}
+                    {/*<label>{labelName.join(' ')}</label>*/}
+                    {/*<p id='data'>*/}
+                    {/*<span>{label === '' ? label : 'N/A'}</span>*/}
+                    {/*</p>*/}
+                  {/*</div>*/}
+                {/*)*/}
+              {/*}*/}
+            {/*)}*/}
             <label>Clients > 5 Years</label>
             <p id='data'>
-              <span>{this.props.reports.clientsGreater5Yrs_Label}</span>
+              <span>{this.props.reports.clientsMoreThan5Years_Label}</span>
             </p>
 
             <label>Mean Recovery Status</label>
@@ -40,7 +60,7 @@ class Status extends Component {
 
             <label>Bad Exit After 6 Months</label>
             <p id='data'>
-              <span>{this.props.reports.bottom6Mo_Label}</span>
+              <span>{this.props.reports.bottom6Months_Label}</span>
             </p>
 
             <label>Good Exit After 18 Months</label>
@@ -50,7 +70,7 @@ class Status extends Component {
 
             <label>Bad Exit After 18 Months</label>
             <p id='data'>
-              <span>{this.props.reports.bottom18Mo_Label}</span>
+              <span>{this.props.reports.bottom18Months_Label}</span>
             </p>
 
             <label>Good Exit After 24 Months</label>
@@ -60,7 +80,7 @@ class Status extends Component {
 
             <label>Bad Exit After 24 Months</label>
             <p id='data'>
-              <span>{this.props.reports.bottom24Mo_Label}</span>
+              <span>{this.props.reports.bottom24Months_Label}</span>
             </p>
 
             <label>Good Exit After 36 Months</label>
@@ -70,7 +90,7 @@ class Status extends Component {
 
             <label>Bad Exit After 36 Months</label>
             <p id='data'>
-              <span>{this.props.reports.bottom36Mo_Label}</span>
+              <span>{this.props.reports.bottom36Months_Label}</span>
             </p>
 
             <label>Neutral Exit 36 Plus Months</label>
@@ -80,17 +100,17 @@ class Status extends Component {
 
             <label>Bad Exit 36 Plus Months</label>
             <p id='data'>
-            <span>{this.props.reports.bottom36PlusMo_Label}</span>
+            <span>{this.props.reports.bottom36PlusMonths_Label}</span>
             </p>
 
             <label>Good Exit Ratio (%)</label>
             <p id='data'>
-              <span>{this.props.reports.percentGoodExit_Label ? this.props.reports.percentGoodExit_Label : 'N/A'}</span>
+              <span>{this.props.reports.goodExitRatio_Label ? this.props.reports.goodExitRatio_Label : 'N/A'}</span>
             </p>
 
             <label>Bad Exit Ratio (%)</label>
             <p id='data'>
-              <span>{this.props.reports.percentBadExit_Label ? this.props.reports.percentBadExit_Label : 'N/A'}</span>
+              <span>{this.props.reports.badExitRatio_Label ? this.props.reports.badExitRatio_Label : 'N/A'}</span>
             </p>
 
             <label>Embeddedness</label>
@@ -130,12 +150,12 @@ class Status extends Component {
 
             <label>Common Law Capture</label>
             <p id='data'>
-              <span>{this.props.reports.commonLawNum_Label}</span>
+              <span>{this.props.reports.commonLawNumber_Label}</span>
             </p>
 
             <label>Common Law Ratio</label>
             <p id='data'>
-              <span>{this.props.reports.commonLawPercent_Label ? this.props.reports.commonLawPercent_Label : 'N/A'}</span>
+              <span>{this.props.reports.commonLawRatio_Label ? this.props.reports.commonLawRatio_Label : 'N/A'}</span>
             </p>
 
             <label>Costs</label>
@@ -151,8 +171,25 @@ class Status extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    reports: state.reports
+  const reports = state.reports;
+
+  if (Object.keys(reports).length > 0) {
+    const filteredReports = Object.keys(reports)
+      .filter(key => key.slice(-5) === 'Label')
+      .reduce((obj, key) => {
+        return {
+          ...obj,
+          [key]: reports[key]
+        };
+      }, {});
+
+    return {
+      reports: filteredReports
+    }
+  } else {
+    return {
+      reports: reports
+    }
   }
 };
 

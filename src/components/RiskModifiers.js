@@ -4,101 +4,55 @@ import '../styles/riskModifiers.css';
 import {formatNumber} from "../utils/helpers";
 import Loading from "./Loading";
 import {handleUpdateReport} from "../actions/reports";
+import {Scatter} from "react-chartjs-2";
 
 class RiskModifiers extends Component {
   render() {
-    if (this.props.reports.injurySeverity_Label !== undefined) {
+    // console.log(this.props.reports);
+    if (this.props.reports.injurySeverity_Modifier !== undefined) {
       return (
         <div className='risk-modifiers-container text-center'>
           <h4 id='risk-modifiers-container-header'>Modifiers</h4>
           <div id='risk-modifiers-container-body'>
-            <p>
-              <span><button type="button" className="btn btn-outline-primary"
-                        onClick={() => this.props.dispatch(handleUpdateReport({
-                          name:'injurySeverity_Label',
-                          value:this.props.reports.injurySeverity_Label - 1},
-                          'ask clients [ set InjurySeverity InjurySeverity - 1 ]'
-                          ))}>
-                - 1</button></span>
-              <span>{formatNumber(this.props.reports.injurySeverity_Label, 3)}</span>
-              <span><button type="button" className="btn btn-outline-primary">+ 1</button></span>
-            </p>
-            <label>Injury Severity</label>
+            {Object.keys(this.props.reports).map(key => {
+                const modifier = this.props.reports[key];
+                const label = key
+                  .slice(0, -9)
+                  .split(/(?=[A-Z])/)
+                  .map(word => word.charAt(0).toUpperCase() + word.slice(1));
 
-            Object
-            <p><span>
-
-            </span></p>
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.atFaultStatus_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>At Fault Status</label>*/}
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.healthStatus_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>Health Status</label>*/}
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.previousInjury_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>Previous Injury</label>*/}
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.employmentStatus_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>Employment</label>*/}
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.vulnerableStatus_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>Vulnerable Status</label>*/}
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.gender_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>Gender</label>*/}
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.age_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>Age</label>*/}
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.claimDuration_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>Claim Duration</label>*/}
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.injuryClassification_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>Injury Classification</label>*/}
-
-            {/*<p>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">- 1</button></span>*/}
-            {/*<span>{formatNumber(this.props.reports.education_Label, 3)}</span>*/}
-            {/*<span><button type="button" className="btn btn-outline-primary">+ 1</button></span>*/}
-            {/*</p>*/}
-            {/*<label>Education</label>*/}
+                return (
+                  <div key={key}>
+                    <p>
+                      <span>
+                        <button type="button" className="btn btn-outline-primary"
+                                onClick={() => this.props.dispatch(handleUpdateReport({
+                                    name: key,
+                                    value: modifier - 1
+                                  },
+                                  `ask clients [ set ${label.join('')} ${label.join('')} - 1 ]`
+                                ))}>
+                          - 1
+                        </button>
+                      </span>
+                      <span>{formatNumber(modifier, 3)}</span>
+                      <span>
+                        <button type="button" className="btn btn-outline-primary"
+                                onClick={() => this.props.dispatch(handleUpdateReport({
+                                    name: key,
+                                    value: modifier + 1
+                                  },
+                                  `ask clients [ set ${label.join('')} ${label.join('')} + 1 ]`
+                                ))}>
+                          + 1
+                        </button>
+                      </span>
+                    </p>
+                    <label>{label.join(' ')}</label>
+                  </div>
+                )
+              }
+            )}
           </div>
         </div>
       )
@@ -109,8 +63,25 @@ class RiskModifiers extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    reports: state.reports
+  const reports = state.reports;
+
+  if (Object.keys(reports).length > 0) {
+    const filteredReports = Object.keys(reports)
+      .filter(key => key.slice(-8) === 'Modifier')
+      .reduce((obj, key) => {
+        return {
+          ...obj,
+          [key]: reports[key]
+        };
+      }, {});
+
+    return {
+      reports: filteredReports
+    }
+  } else {
+    return {
+      reports: reports
+    }
   }
 };
 
