@@ -6,10 +6,9 @@ import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
 import '../styles/parameters.css';
 import {handleUpdateReport} from "../actions/reports";
-import {formatNumber} from "../utils/helpers";
 
-const createSliderWithTooltip = Slider.createSliderWithTooltip;
-const Range = createSliderWithTooltip(Slider.Range);
+// const createSliderWithTooltip = Slider.createSliderWithTooltip;
+// const Range = createSliderWithTooltip(Slider.Range);
 const Handle = Slider.Handle;
 
 const handle = (props) => {
@@ -71,26 +70,6 @@ class Sliders extends Component {
       <div className='params-container text-center'>
         <h4 id='params-header'>Sliders</h4>
         <div className='sliders' id='params-body'>
-          {/*TODO: needs min, max, step from API*/}
-          {/*{Object.keys(this.props.reports).map(key => {*/}
-          {/*const slider = this.props.reports[key];*/}
-          {/*const sliderName = key*/}
-          {/*.slice(0, -7)*/}
-          {/*.split(/(?=[A-Z])|(?=[0-9])/)*/}
-          {/*.map(word => word.charAt(0).toUpperCase() + word.slice(1));*/}
-
-          {/*return (*/}
-          {/*<div key={key}>*/}
-          {/*<Slider min={0} max={1000} defaultValue={20} step={5}*/}
-          {/*handle={handle}*/}
-          {/*onChange={this.handleSliderChange}*/}
-          {/*/>*/}
-          {/*<p>New Clients: {this.props.reports.newClients_Slider}</p>*/}
-          {/*</div>*/}
-          {/*)*/}
-          {/*}*/}
-          {/*)}*/}
-
           <Slider min={0} max={1000} defaultValue={20} step={5}
                   handle={handle}
                   onChange={(e) => this.handleSliderChange("newClients_Slider", e)}
