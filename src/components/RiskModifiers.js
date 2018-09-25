@@ -4,11 +4,9 @@ import '../styles/riskModifiers.css';
 import {formatNumber} from "../utils/helpers";
 import Loading from "./Loading";
 import {handleUpdateReport} from "../actions/reports";
-import {Scatter} from "react-chartjs-2";
 
 class RiskModifiers extends Component {
   render() {
-    // console.log(this.props.reports);
     if (this.props.reports.injurySeverity_Modifier !== undefined) {
       return (
         <div className='risk-modifiers-container text-center'>

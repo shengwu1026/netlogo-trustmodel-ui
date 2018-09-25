@@ -3,7 +3,6 @@ import Loading from "./Loading";
 import {connect} from 'react-redux';
 import {formatNumber} from "../utils/helpers";
 import '../styles/status.css';
-import {handleUpdateReport} from "../actions/reports";
 
 class Status extends Component {
   render() {

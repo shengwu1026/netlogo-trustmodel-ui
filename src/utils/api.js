@@ -3,7 +3,7 @@ import axios from 'axios';
 function getReports() {
   return axios.get(`http://localhost:8080/workspace/reports`)
     .then(function (response) {
-      console.log('reports', response.data);
+      // console.log('reports', response.data);
       return response.data;
     })
     .catch(error => {
