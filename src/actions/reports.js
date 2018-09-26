@@ -18,9 +18,8 @@ function updateReport(report) {
 }
 
 export function handleUpdateReport(report, command) {
-  return (dispatch) => {
-    handleCommand(command).then(() => {
-      dispatch(updateReport(report));
-    })
+  return dispatch => {
+    handleCommand(command)
+      .then(() => dispatch(updateReport(report)))
   }
 }

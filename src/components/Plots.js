@@ -29,7 +29,7 @@ class Plots extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     plots: state.plots
   }

@@ -4,7 +4,7 @@ import {receiveView} from "./view";
 import {receiveReports} from "./reports";
 
 export function handleInitialData() {
-  return (dispatch) => {
+  return dispatch => {
     return getInitialData()
       .then(({reports, view, plots}) => {
         dispatch(receiveReports(reports));
@@ -15,7 +15,7 @@ export function handleInitialData() {
 }
 
 export function handleData() {
-  return (dispatch) => {
+  return dispatch => {
     return getData()
       .then(({reports, view, plots}) => {
         dispatch(receiveReports(reports));

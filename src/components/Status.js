@@ -15,22 +15,22 @@ class Status extends Component {
           <div id='status-container-body'>
             {/*TODO: needs to work on Regex*/}
             {/*{Object.keys(this.props.reports).map(key => {*/}
-                {/*const label = this.props.reports[key];*/}
-                {/*console.log(label);*/}
-                {/*const labelName = key*/}
-                  {/*.slice(0, -6)*/}
-                  {/*.split(/(?=[A-Z])|(?=[0-9])/)*/}
-                  {/*.map(word => word.charAt(0).toUpperCase() + word.slice(1));*/}
+            {/*const label = this.props.reports[key];*/}
+            {/*console.log(label);*/}
+            {/*const labelName = key*/}
+            {/*.slice(0, -6)*/}
+            {/*.split(/(?=[A-Z])|(?=[0-9])/)*/}
+            {/*.map(word => word.charAt(0).toUpperCase() + word.slice(1));*/}
 
-                {/*return (*/}
-                  {/*<div key={key}>*/}
-                    {/*<label>{labelName.join(' ')}</label>*/}
-                    {/*<p id='data'>*/}
-                    {/*<span>{label === '' ? label : 'N/A'}</span>*/}
-                    {/*</p>*/}
-                  {/*</div>*/}
-                {/*)*/}
-              {/*}*/}
+            {/*return (*/}
+            {/*<div key={key}>*/}
+            {/*<label>{labelName.join(' ')}</label>*/}
+            {/*<p id='data'>*/}
+            {/*<span>{label === '' ? label : 'N/A'}</span>*/}
+            {/*</p>*/}
+            {/*</div>*/}
+            {/*)*/}
+            {/*}*/}
             {/*)}*/}
             <label>Clients > 5 Years</label>
             <p id='data'>
@@ -99,7 +99,7 @@ class Status extends Component {
 
             <label>Bad Exit 36 Plus Months</label>
             <p id='data'>
-            <span>{this.props.reports.bottom36PlusMonths_Label}</span>
+              <span>{this.props.reports.bottom36PlusMonths_Label}</span>
             </p>
 
             <label>Good Exit Ratio (%)</label>
@@ -169,7 +169,7 @@ class Status extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const reports = state.reports;
 
   if (Object.keys(reports).length > 0) {

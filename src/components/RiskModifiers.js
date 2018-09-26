@@ -60,7 +60,7 @@ class RiskModifiers extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const reports = state.reports;
 
   if (Object.keys(reports).length > 0) {

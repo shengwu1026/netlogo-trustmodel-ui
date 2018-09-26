@@ -11,7 +11,7 @@ import {handleUpdateReport} from "../actions/reports";
 // const Range = createSliderWithTooltip(Slider.Range);
 const Handle = Slider.Handle;
 
-const handle = (props) => {
+const handle = props => {
   const {value, dragging, index, ...restProps} = props;
   return (
     <Tooltip
@@ -176,7 +176,7 @@ class Sliders extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const reports = state.reports;
 
   if (Object.keys(reports).length > 0) {

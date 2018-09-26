@@ -2,7 +2,7 @@ import axios from 'axios';
 
 function getReports() {
   return axios.get(`http://localhost:8080/workspace/reports`)
-    .then(function (response) {
+    .then(response => {
       // console.log('reports', response.data);
       return response.data;
     })
@@ -13,7 +13,7 @@ function getReports() {
 
 function getView() {
   return axios.get(`http://localhost:8080/workspace/view`)
-    .then(function (response) {
+    .then(response => {
       // console.log('view', response.data);
       return response.data;
     })
@@ -24,7 +24,7 @@ function getView() {
 
 function getPlots() {
   return axios.get(`http://localhost:8080/workspace/plots`)
-    .then(function (response) {
+    .then(response => {
       // console.log('plots', response.data);
       return response.data;
     })
@@ -36,7 +36,7 @@ function getPlots() {
 function formatPlots() {
   return Promise.resolve(
     getPlots()
-  ).then((plots) => {
+  ).then(plots => {
     let formattedPlots = [];
     let i;
 

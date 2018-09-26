@@ -25,7 +25,7 @@ class View extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     view: state.view
   }
